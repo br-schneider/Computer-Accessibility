@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="phone.css">
+		<title> iPhone </title>
+	</head>
+	<body>
+		<div class="nav" id="tab_bar" >
+			<button class="tab" id="contacts">contacts</button>
+			<button class="tab" id="keypad">keypad</button>
+			<button class="tab" id="add_contact">add contact</button>
+		</div>
+
+		<div id="content">
+
+			<div id="contacts_content">
+
+				<h2 class="title">Contacts</h2>
+      				<div class="content">
+					    <button class="contact-key">Sara Smile</button>
+					    <button class="contact-key">Tyler Childers</button>
+					    <button class="contact-key">Eric Clapton</button>
+					    <button class="contact-key">Willie Nelson</button>
+					    <button class="contact-key">Waylon Jennings</button>
+					    <div></div>
+					    <button class="contact-key">George Strait</button>
+					    <button class="contact-key">Anthony Kiedis</button>
+					    <button class="contact-key">John Frusciante</button>
+					    <button class="contact-key">Chad Smith</button>
+					    <button class="contact-key">Dave Navarro</button>
+      				</div>
+
+			</div>
+
+
+			<div id="keypad_content">
+
+				<h2 class="title">Keypad</h2>
+					<form class="entry-view">
+						<input type="text" name="number">
+					</form>
+					<button class="keys">1</button>
+					<button class="keys">2</button>
+					<button class="keys">3</button>
+					<div></div>
+					<button class="keys">4</button>
+					<button class="keys">5</button>
+					<button class="keys">6</button>
+					<div></div>
+					<button class="keys">7</button>
+					<button class="keys">8</button>
+					<button class="keys">9</button>
+					<div></div>
+					<button class="keys">*</button>
+					<button class="keys">0</button>
+					<button class="keys">#</button>
+					<div></div>
+					<button class="big-key">Dial</button>
+					<button class="Delete">Delete</button>
+
+			</div>
+
+
+			<div id="add_contact_content">
+				
+				 <h2 class="title">Add Contact</h2>
+    				<form>
+				      Name: <input type="text" name="name" placeholder="John Frusciante">
+				      Phone Number: <input type="text" name="number" placeholder="123-456-7890">
+				      Email: <input type="text" name="email" placeholder="john.frusciante@email.com">
+    				</form>
+
+    				<button class="big-key">Add Contact</button>
+    				<button class="big-key">Clear</button>
+
+			</div>
+
+		</div>
+
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="phone.js"></script>
+	</body>
+</html>

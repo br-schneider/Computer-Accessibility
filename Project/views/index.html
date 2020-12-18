@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		  <title>Project</title>
+
+    	<!-- Bootstrap core CSS -->
+		  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    	<!-- Custom styles for this template -->
+    	<link href="../resources/css/main_template.css" rel="stylesheet">
+
+      <!-- Fonts and such -->
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+
+      <style>
+        #thermometer_inner { width: 95%; height: 20%; margin:2.5%; background: red; position:absolute; bottom:0;}
+        #thermometer_outer {height:400px; position:relative;}
+        #temp_today { color:white; text-align:center; position:relative; top:50%; }
+      </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="main-header">
+        <a class="header-logo text-dark">DarkSky Accessible UI Project</a>
+      </header>
+    </div>
+
+    <div class="jumbotron text-dark rounded bg-white">
+      <h4 id="test" class="font-Georgia text-dark"  style="text-align:left">Enter the longitude and latitude of the location you want the temperature of! Boulder's is (40.0150,-105.2705) </h4>
+      <div class="input-group mb-3">
+        <input id="longlatboi" type="text" class="form-control" placeholder="40.0150,-105.2705" aria-label="long-lat" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary text-dark" type="button" id="button-addon2"  onclick="myFunction()">Search</button>
+
+            <script>
+              function myFunction() {
+                var appendLongLat = document.getElementById("longlatboi").value
+                
+
+                document.getElementById("6_day_forecast").innerHTML = null;
+
+                
+
+              $(document).ready(function() {
+              var url ='https://api.darksky.net/forecast/72b66adc9a29b48374b8d85cf8aa274b/' + appendLongLat; //Place your DarkSky API Call Here 
+
+              console.log(url);
+
+
+
+              $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
+                var unix_time = data.currently.time;
+                var javascript_time = new Date(unix_time * 1000);
+                console.log(javascript_time);
+                console.log(javascript_time.getDay());
+                
+                var week_names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                var currentTemp = data.currently.apparentTemperature;
+                document.getElementById("temp_today").innerHTML = currentTemp;
+                document.getElementById("thermometer_inner").style.height = (currentTemp + "%");
+                document.getElementById("precip_today").innerHTML = data.currently.precipProbability + "%";
+                document.getElementById("humidity_today").innerHTML = data.currently.humidity*100 + "%";
+                document.getElementById("wind_today").innerHTML = data.currently.windSpeed;
+                document.getElementById("summary_today").innerHTML = data.currently.summary;
+                var setImage = "../resources/img/" + data.currently.icon + ".png";
+                document.getElementById("image_today").src = setImage;
+                document.getElementById("icon_today").innerHTML = data.currently.icon;
+
+                var day = javascript_time.getDay()
+                var startDay = day;
+                day++;
+                //var day = 0;
+
+                for(day; day < 8; day++) {  
+                  var setImage = "../resources/img/" + data.daily.data[day].icon + ".png";
+
+                  var s = 
+                  "<div class=\"col-2\"> \
+                    <div class=\"card\"> \
+                      <img class=\"card-img-top\" src=\" " + setImage + " \" alt=\"Card image cap\"> \
+                      <div class=\"card-body\">\
+                        <h5 class=\"card-title\"> " + week_names[day] + " </h5> \
+                        <p class=\"card-text\">High: " + data.daily.data[day].apparentTemperatureHigh + "F <br> \
+                          Low: " + data.daily.data[day].apparentTemperatureLow + "F </p> \
+                      </div> \
+                    </div> \
+                  </div>";
+
+
+                  if (day == startDay) {
+                    break;
+                  }
+
+                  document.getElementById("6_day_forecast").innerHTML += s;
+
+                  console.log("resetday" + day);
+
+                  if (day == 6) {
+                    day = -1;
+                  }
+                }
+
+
+              })
+            })
+
+              }
+            </script>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="jumbotron text-white rounded bg-dark">
+      <div class="col">
+        <h1 id="test" class="font-italic text-white" style="text-align:center">Today's Forecast</h1>
+          <hr>
+            <div class="row">
+              <div class="col-4">
+                <div class="card" >
+                  <div id="thermometer_outer">
+                  <div id="thermometer_inner"><p id="temp_today" class="h3"> 0 F</p></div>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="text-center">Thermometer</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card" style="height:100%;">
+                <div class="my-auto">
+                  <img id="image_today" class="img-fluid" src="../resources/img/clear-day.png" alt="Today's Weather Icon">
+                  <p id="icon_today" class="h3" style="text-align:center">Icon</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card " style="height:100%;">
+                <div class="my-auto">
+                  <p class="h3" style="padding-left:15px;">Precipitation: <span id="precip_today">10%</span><br>
+                    Humidity: <span id="humidity_today">80%</span><br>
+                    Wind Speed: <span id="wind_today">5</span> mph<br>
+                    Summary: <span id="summary_today">Summary Info</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <h2 class="h1 font-italic text-white" style="text-align:center;">6 Day Forecast</h2>
+          <hr>
+          <div class="row" id="6_day_forecast">
+    </div>
+    <br>
+
+
+
+
+      </div>
+    </div>
+
+    
+  		
+
+  </body>
+  	
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</html>

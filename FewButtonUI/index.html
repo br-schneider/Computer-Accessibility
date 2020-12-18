@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<title>
+			Calculator Demo
+		</title>
+		<link rel="stylesheet" href="calculator.css" type="text/css">
+	</head>
+	<body>
+		<div id="calculator">
+			<h1>calc U l8r</h1>
+			<div class="calculator_row">
+				<input id="number_input">
+			</div>
+			<div class="calculator_row">
+				<button id="button7" class="calcButton row1 col1">7</button>
+				<button id="button8" class="calcButton row1 col2">8</button>
+				<button id="button9" class="calcButton row1 col3">9</button>
+				<button id="buttonDivide" class="calcButton row1 col4 function">/</button>
+			</div>
+			<div class="calculator_row">
+				<button id="button4" class="calcButton row2 col1">4</button>
+				<button id="button5" class="calcButton row2 col2">5</button>
+				<button id="button6" class="calcButton row2 col3">6</button>
+				<button id="buttonMultiply" class="calcButton row2 col4 function">*</button>
+			</div>
+			<div class="calculator_row">
+				<button id="button1" class="calcButton row3 col1">1</button>
+				<button id="button2" class="calcButton row3 col2">2</button>
+				<button id="button3" class="calcButton row3 col3">3</button>
+				<button id="buttonAdd" class="calcButton row3 col4 function">+</button>
+			</div>
+			<div class="calculator_row">
+				<button id="button0" class="calcButton row4 col1">0</button>
+				<button id="buttonClear" class="calcButton row4 col2 meta">C</button>
+				<button id="buttonEquals" class="calcButton row4 col3 meta">=</button>
+				<button id="buttonSubtract" class="calcButton row4 col4 function">-</button>
+			</div>
+		</div>
+		<div id="comments">
+			<h2>About this app</h2>
+			<p>Tested 3-key vs 5-key Interaction</p>
+			<ul bold>
+				
+				<li>
+
+				<b>3 - key version</b><br>
+				A key = left/previous<br>
+				D key = right/next<br>
+				S key = click selected button<br>
+				<br><br>
+				<b>5 - key version (currently implemented)</b><br>
+				W key = up<br>
+				A key = left<br>
+				S key = down<br>
+				D key = right<br>
+				Q key = click selected button (didn't know if this would be the best select key)<br>
+				<br><br>
+
+				</li>
+
+
+				<li>
+
+					Did the set operations below 5 times each and calculated the average time of each of them would take. <br>
+					It was interesting because with more keys I felt like I could move faster but then made a lot of errors. <br>
+					With the 3 keys I moved slower and more precise because it didn't feel as familiar I believe.  Another thing <br>
+					I noticed was by transitioning from 3 key to 5 key I made some errors in the 1st test of the 5 key because <br>
+					I got used to the 3 key.  I also had a thought that maybe if I made the 5 key work so that I did movement with <br>
+					the left hand and selection with the right hand maybe it would have felt more natural.  I think it was good however <br>
+					to get the consistency of using one hand for both tests.  Overall the results were much different than I <br>
+					thought they would be.
+
+					<br><br>
+					<b>3 key test results and operations</b><br>
+					5*5+3-2 --- (20 seconds, 1 error)<br>
+					1+2+3+4+5 --- (16 seconds, 0.5 errors)<br>
+					2*8 --- (8 seconds, 0 errors)<br>
+					5+3-2 --- (13 seconds, 0.8 errors)<br>
+					10/20/5 --- (19 seconds, 0.6 errors)<br>
+					<br><br>
+					<b>5 key test results and operations</b><br>
+					5*5+3-2 --- (14 seconds, 2.2 errors)<br>
+					1+2+3+4+5 --- (15 seconds, 2 errors)<br>
+					2*8 --- (4 seconds, 0.2 errors)<br>
+					5+3-2 --- (9 seconds, 1 error)<br>
+					10/20/5 --- (13 seconds, 1.6 errors)<br>
+
+
+				</li>
+
+
+				<li></li>
+
+
+			</ul>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+		<script src="calculator.js" type="text/javascript"></script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+/* make all buttons 20 by 20 pixels with white text and green background and a 10 pixel margin */
+button { width: 20px; height: 20px; background: dodgerblue; color: white; margin: 10px; }
+
+
+.tab {
+	height: 50px;
+	width: 120px;
+}
+
+.keys {
+	background: orange;
+	height: 50px;
+	width: 80px;
+	margin: 5px;
+}
+
+.big-key {
+	background: grey;
+	width: 120px;
+	height: 50px;
+	margin: 5px;
+}
+
+.contact-key {
+	background: mediumseagreen;
+	width: 120px;
+	height: 30px;
+	margin: 5px;
+}
+
+/* make the button with ID "delete" red */
+.delete { 
+	background: red; 
+	width: 120px;
+	height: 50px;
+	margin: 5px;
+}
